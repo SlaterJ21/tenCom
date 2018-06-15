@@ -9,6 +9,6 @@ https://trello.com/b/4iUIvLuP/q2-project
 # Routes
 <img src="./readImg/Routes.png" width="500"/>
 
-#Style
+# Style
 <img src="./readImg/fonts.png" width="500"/>
 <img src="./readImg/colors.png" width="500"/>
