@@ -6,6 +6,13 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000
+const knex = require('./knex')
+
+
+// Use body parser https://www.npmjs.com/package/body-parser
+// See Express/Connect top-level generic for code to use here
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
 //Routers
 const users = require('./routes/users')
@@ -19,10 +26,7 @@ app.use('/properties', properties)
 app.use('/contracts', contracts)
 
 
-// Use body parser https://www.npmjs.com/package/body-parser
-// See Express/Connect top-level generic for code to use here
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+
 
 // write a catch all route that will respond with status of 418
 app.use((req,res,next) => {
