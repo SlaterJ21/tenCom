@@ -1,3 +1,6 @@
+const express = require('../node_modules/express')
+const app = express()
+
 // write a route for creating a contracts, return the body of the request that was sent to your route
 app.post('/contracts', (req,res,next) => {
   res.status(200).send(req.body)
@@ -18,3 +21,9 @@ app.patch('/contracts/:id', (req,res,next) => {
 app.delete('/contracts/:id', (req,res,next) => {
   res.status(200).send(req.params.id)
 })
+
+app.use((req, res, next) => {
+  res.status(200).send('what up contracts ninja')
+})
+
+module.exports = app
