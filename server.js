@@ -24,11 +24,6 @@ app.use('/contracts', contracts)
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-// write a route for getting all of the cookies, respond with a 200 status code
-app.get('/cookies/', (req,res,next) => {
-  res.sendStatus(200)
-})
-
 // write a catch all route that will respond with status of 418
 app.use((req,res,next) => {
   res.status(418).send({error: {message: "418 you teapot"}})
