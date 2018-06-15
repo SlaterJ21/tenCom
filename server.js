@@ -7,6 +7,12 @@ const app = express()
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000
 
+//Routers
+const users = require('./routes/user')
+const properties = require('./routes/user')
+const contracts = require('./routes/contracts')
+
+
 // Use body parser https://www.npmjs.com/package/body-parser
 // See Express/Connect top-level generic for code to use here
 app.use(bodyParser.urlencoded({extended: false}))
