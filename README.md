@@ -12,3 +12,6 @@ https://trello.com/b/4iUIvLuP/q2-project
 # Style
 <img src="./readImg/fonts.png" width="500"/>
 <img src="./readImg/colors.png" width="500"/>
+
+# WireFrame
+<img src="./readImg/Q2Wireframe.png" width="500"/>
