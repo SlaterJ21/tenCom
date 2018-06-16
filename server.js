@@ -18,14 +18,13 @@ app.use(bodyParser.json())
 const users = require('./routes/users')
 const properties = require('./routes/properties')
 const contracts = require('./routes/contracts')
+const home = require('./routes/home')
 
 //use Routers
-                          // app.use('/', )
+app.use('/', home)
 app.use('/users', users)
 app.use('/properties', properties)
 app.use('/contracts', contracts)
-
-
 
 
 // write a catch all route that will respond with status of 418
