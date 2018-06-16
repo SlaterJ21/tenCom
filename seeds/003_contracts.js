@@ -5,8 +5,8 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('contracts').insert([
-        {id: 1, rent: 400,status: 'rented',contract: 'closed'},
-        {id: 2, rent: 600,status: 'vacant',contract: 'open'},
+        {id: 1, rent: 400,status: true,contract: 'closed'},
+        {id: 2, rent: 600,status: false,contract: 'open'},
       ]);
     });
 };
