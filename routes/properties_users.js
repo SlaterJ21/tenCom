@@ -2,9 +2,9 @@ const express = require('../node_modules/express')
 const router = express.Router()
 const knex = require('../knex')
 
-// write a route for creating a users, return the body of the request that was sent to your route
+// write a route for creating a properties_users, return the body of the request that was sent to your route
 router.post('/', (req,res,next) => {
-  knex('users')
+  knex('properties_users')
     .insert({
       "first_name": req.body.first_name,
       "last_name": req.body.last_name,
@@ -23,9 +23,9 @@ router.post('/', (req,res,next) => {
   res.status(200).send(req.body)
 })
 
-// write a route for getting one of the users, respond with the parameter id and make sure the id is converted to a string before sending
+// write a route for getting one of the properties_users, respond with the parameter id and make sure the id is converted to a string before sending
 router.get('/', (req,res,next) => {
-  knex('users')
+  knex('properties_users')
     .then((rows) => {
       res.json(rows)
     })
@@ -35,9 +35,9 @@ router.get('/', (req,res,next) => {
   // res.status(200).send(req.params.id)
 })
 
-// write a route for getting one of the users, respond with the parameter id and make sure the id is converted to a string before sending
+// write a route for getting one of the properties_users, respond with the parameter id and make sure the id is converted to a string before sending
 router.get('/:id', (req,res,next) => {
-  knex('users')
+  knex('properties_users')
   .where('id',req.params.id)
   .then((rows) => {
     res.json(rows)
@@ -48,12 +48,12 @@ router.get('/:id', (req,res,next) => {
   // res.status(200).send(req.params.id)
 })
 
-// write a patch route for editing a users, return an object with the id and the change that was requested
+// write a patch route for editing a properties_users, return an object with the id and the change that was requested
 router.put('/:id', (req,res,next) => {
-  knex('users')
+  knex('properties_users')
     .where('id', req.params.id)
     .then((data) => {
-      knex('users')
+      knex('properties_users')
       .where('id', req.params.id)
       .limit(1)
       .update({
@@ -74,14 +74,14 @@ router.put('/:id', (req,res,next) => {
     })
 })
 
-// write a route for deleting one of the users, respond with the parameter id
-router.delete('/users/:id', (req,res,next) => {
-  knex('users')
+// write a route for deleting one of the properties_users, respond with the parameter id
+router.delete('/properties_users/:id', (req,res,next) => {
+  knex('properties_users')
   .where('id', req.params.id)
   .first()
   .then((row) => {
     if(!row) return next()
-    knex('users')
+    knex('properties_users')
       .del()
       .where('id', req.params.id)
       .then(() => {
@@ -95,7 +95,7 @@ router.delete('/users/:id', (req,res,next) => {
 })
 
 // router.use((req, res, next) => {
-//   res.status(200).send('what up users ninja')
+//   res.status(200).send('what up properties_users ninja')
 // })
 
 module.exports = router
