@@ -4,7 +4,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgresql://localhost:3000/cleverent'
+    connection: 'postgresql://localhost:5432/cleverent'
   },
 
   production: {
