@@ -1,9 +1,9 @@
 const express = require('../node_modules/express')
-const app = express()
-const path = require('path');
+const router = express.Router()
+// const path = require('path');
 
 
-app.use(express.static('public'))
+router.use(express.static('public'))
 
 // // viewed at http://localhost:3000
 // app.get('/', function(req, res) {
@@ -24,4 +24,4 @@ app.use(express.static('public'))
 
 
 
-module.exports = app
+module.exports = router
