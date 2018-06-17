@@ -6,12 +6,10 @@ const knex = require('../knex')
 router.post('/', (req,res,next) => {
   knex('properties_users')
     .insert({
-      "first_name": req.body.first_name,
-      "last_name": req.body.last_name,
-      "phone_number": req.body.phone_number,
-      "email": req.body.email,
-      "password": req.body.password,
-      "ispm": req.body.ispm
+      "property_id": req.body.property_id,
+      "tenant_id": req.body.tenant_id,
+      "manager_id": req.body.manager_id,
+      "contract_id": req.body.contract_id
     })
     .returning('*')
     .then((data) => {
@@ -41,52 +39,6 @@ router.get('/:id', (req,res,next) => {
   .where('id',req.params.id)
   .then((rows) => {
     res.json(rows)
-  })
-  .catch((err) => {
-    next(err)
-  })
-  // res.status(200).send(req.params.id)
-})
-
-// write a patch route for editing a properties_users, return an object with the id and the change that was requested
-router.put('/:id', (req,res,next) => {
-  knex('properties_users')
-    .where('id', req.params.id)
-    .then((data) => {
-      knex('properties_users')
-      .where('id', req.params.id)
-      .limit(1)
-      .update({
-        "first_name": req.body.first_name,
-        "last_name": req.body.last_name,
-        "phone_number": req.body.phone_number,
-        "email": req.body.email,
-        "password": req.body.password,
-        "ispm": req.body.ispm
-      })
-      .returning('*')
-      .then((data) => {
-        res.json(data[0])
-      })
-    })
-    .catch((err) => {
-      next(err)
-    })
-})
-
-// write a route for deleting one of the properties_users, respond with the parameter id
-router.delete('/properties_users/:id', (req,res,next) => {
-  knex('properties_users')
-  .where('id', req.params.id)
-  .first()
-  .then((row) => {
-    if(!row) return next()
-    knex('properties_users')
-      .del()
-      .where('id', req.params.id)
-      .then(() => {
-        res.send(`ID ${req.params.id} Deleted`)
-      })
   })
   .catch((err) => {
     next(err)

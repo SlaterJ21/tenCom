@@ -17,6 +17,7 @@ app.use(bodyParser.json())
 //Routers
 const users = require('./routes/users')
 const properties = require('./routes/properties')
+const properties_users = require('./routes/properties_users')
 const contracts = require('./routes/contracts')
 const home = require('./routes/home')
 
@@ -24,6 +25,7 @@ const home = require('./routes/home')
 app.use('/', home)
 app.use('/users', users)
 app.use('/properties', properties)
+app.use('/properties_users', properties_users)
 app.use('/contracts', contracts)
 
 
