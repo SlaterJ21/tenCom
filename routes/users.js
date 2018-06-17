@@ -23,7 +23,7 @@ router.post('/', (req,res,next) => {
   res.status(200).send(req.body)
 })
 
-// write a route for getting one of the users, respond with the parameter id and make sure the id is converted to a string before sending
+// write a route for getting all of the users, respond with the parameter id and make sure the id is converted to a string before sending
 router.get('/', (req,res,next) => {
   knex('users')
     .then((rows) => {
@@ -45,8 +45,9 @@ router.get('/:id', (req,res,next) => {
   .catch((err) => {
     next(err)
   })
-  // res.status(200).send(req.params.id)
 })
+
+
 
 // write a patch route for editing a users, return an object with the id and the change that was requested
 router.put('/:id', (req,res,next) => {
