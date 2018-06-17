@@ -28,7 +28,7 @@ app.use('/users', users)
 app.use('/properties', properties)
 app.use('/properties_users', properties_users)
 app.use('/contracts', contracts)
-
+app.use('/login', login)
 
 // write a catch all route that will respond with status of 418
 app.use((req,res,next) => {

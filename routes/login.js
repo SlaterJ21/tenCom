@@ -1,28 +1,30 @@
 const express = require('express')
 const router = express.Router()
 const knex = require('../knex')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('../node_modules/bcrypt/bcrypt')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
+
+
 
 router.get('/', function(req, res, next) {
   res.render('login', { errorMessage: '' })
 })
 
 router.post('/', function (req, res, next) {
-  const username = req.body.username
+  const email = req.body.email
   const password = req.body.password
 
-  if (username && password) {
+  if (email && password) {
     knex('users')
-      .where('username', username)
+      .where('email', email)
       .then((result) => {
         if (result.length !== 1) {
-          res.status(400).render('login', { errorMessage: 'Bad username. Flourine, Uranimum, Carbon, Potassium.' })
+          res.status(400).render('login', { errorMessage: 'Bad email. Flourine, Uranimum, Carbon, Potassium.' })
         }
         else if (bcrypt.compareSync(password, result[0].password)) {
           const payload = {
-            username: username,
+            email: email,
             userId: result[0].id
           }
           const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1m' })
@@ -35,8 +37,9 @@ router.post('/', function (req, res, next) {
       })
   }
   else {
-    res.status(400).render('login', { errorMessage: 'Must have username and password' })
+    res.status(400).render('login', { errorMessage: 'Must have email and password' })
   }
 })
+
 
 module.exports = router
