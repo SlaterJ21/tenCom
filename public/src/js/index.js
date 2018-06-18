@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
-    let cook = document.cookies
-    console.log(cook)
 
 //ajax request on dom ready
 // $.ajax({url: "/users", success: function(result){

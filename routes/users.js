@@ -5,6 +5,7 @@ const { hashSync } = require('bcryptjs')
 
 // write a route for creating a users, return the body of the request that was sent to your route
 router.post('/', (req,res,next) => {
+  console.log(req.body)
   let hashWord = hashSync(req.body.password)
   knex('users')
     .insert({
@@ -22,7 +23,7 @@ router.post('/', (req,res,next) => {
     .catch((err) => {
       next(err)
     })
-  res.status(200).send(req.body)
+  // res.status(200).send(req.body)
 })
 
 // write a route for getting all of the users, respond with the parameter id and make sure the id is converted to a string before sending
@@ -78,7 +79,7 @@ router.put('/:id', (req,res,next) => {
 })
 
 // write a route for deleting one of the users, respond with the parameter id
-router.delete('/users/:id', (req,res,next) => {
+router.delete('/:id', (req,res,next) => {
   knex('users')
   .where('id', req.params.id)
   .first()

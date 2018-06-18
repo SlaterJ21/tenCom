@@ -18,6 +18,7 @@ const logger = require('morgan')
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
+
 //Routers
 const users = require('./routes/users')
 const properties = require('./routes/properties')
