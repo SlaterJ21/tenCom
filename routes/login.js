@@ -27,7 +27,7 @@ router.post('/', function (req, res, next) {
           }
           const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1m' })
           res.cookie('jwt', token)
-          res.redirect('/')
+          res.redirect('/pmPortfolio.html')
         }
         else {
           res.status(400).json({ errorMessage: 'Bad password' })
