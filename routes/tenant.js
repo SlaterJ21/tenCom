@@ -2,8 +2,8 @@ const express = require('../node_modules/express')
 const router = express.Router()
 // const path = require('path');
 
-
-router.use(express.static('public'))
+console.log('u in da right hizzzaaaaaayyyyyyyyy')
+router.use(express.static('/public/tenantPortfolio'))
 
 // // viewed at http://localhost:3000
 // app.get('/', function(req, res) {

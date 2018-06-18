@@ -25,9 +25,11 @@ const properties_users = require('./routes/properties_users')
 const contracts = require('./routes/contracts')
 const home = require('./routes/home')
 const login = require('./routes/login')
+const tenant = require('./routes/tenant')
 
 //use Routers
 app.use('/', home)
+app.use('/tenant', tenant)
 app.use('/users', users)
 app.use('/properties', properties)
 app.use('/properties_users', properties_users)
