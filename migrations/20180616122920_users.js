@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
 
     table.varchar('first_name', 50).notNullable().defaultTo('')
     table.varchar('last_name', 50).notNullable().defaultTo('')
-    table.bigInteger('phone_number').defaultTo(null)
+    table.bigInteger('phone_number')
     table.varchar('email', 50).notNullable().defaultTo('')
     table.varchar('password', 255).notNullable().defaultTo('')
     table.boolean('ispm').notNullable().defaultTo(false)
