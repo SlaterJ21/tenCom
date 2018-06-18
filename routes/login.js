@@ -28,7 +28,7 @@ router.post('/', function (req, res, next) {
           const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1m' })
           res.cookie('jwt', token)
           console.log('u in ninga')
-          res.redirect('/tenant')
+          res.redirect('/')
         }
         else {
           res.status(400).json({ errorMessage: 'Bad password' })

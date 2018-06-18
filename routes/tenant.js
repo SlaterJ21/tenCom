@@ -3,7 +3,7 @@ const router = express.Router()
 // const path = require('path');
 
 console.log('u in da right hizzzaaaaaayyyyyyyyy')
-router.use(express.static('/public/tenantPortfolio'))
+router.use(express.static('public'))
 
 // // viewed at http://localhost:3000
 // app.get('/', function(req, res) {
