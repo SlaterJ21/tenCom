@@ -2,7 +2,7 @@ const express = require('../node_modules/express')
 const router = express.Router()
 // const path = require('path');
 
-
+console.log('u in da right hizzzaaaaaayyyyyyyyy')
 router.use(express.static('public'))
 
 // // viewed at http://localhost:3000

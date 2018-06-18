@@ -4,16 +4,15 @@ const knex = require('../knex')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
-console.log('jwt_secret', process.env)
 
 router.get('/', function(req, res, next) {
   res.json({ errorMessage: '' })
 })
 
 router.post('/', function (req, res, next) {
+  console.log(req.body)
   const email = req.body.email
   const password = req.body.password
-
   if (email && password) {
     knex('users')
       .where('email', email)
@@ -28,6 +27,7 @@ router.post('/', function (req, res, next) {
           }
           const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1m' })
           res.cookie('jwt', token)
+          console.log('u in ninga')
           res.redirect('/')
         }
         else {
