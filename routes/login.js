@@ -27,7 +27,6 @@ router.post('/', function (req, res, next) {
           }
           const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1m' })
           res.cookie('jwt', token)
-          console.log('u in ninga')
           res.redirect('/')
         }
         else {
