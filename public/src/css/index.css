@@ -41,6 +41,10 @@ html {
 body {
   opacity: 1;
   transition: 1s opacity;
+  background-image: url("http://images.dreesteam.com/dreeshomes2016/hpslides/HOU/1_LinleyA_RAP.jpg");
+  background-repeat: no-repeat;
+  background-size: 1300px 750px;
+  background-color: #cccccc;
 }
 
 body.fade-out {
@@ -60,3 +64,17 @@ body.fade-out {
 .slider .indicators .indicator-item.active {
     background-color: #2979ff;
 }
+#homeNav{
+  background-color: rgba(0, 0, 0, 0.9);
+}
+#m1{
+  background-color: rgba(0, 0, 0, 0.9)
+}
+#m2{
+  background-color: rgba(0, 0, 0, 0.9)
+}
+/* .hue{
+  background-color: rgba(177,142,209,0.2);
+  height: 100%;
+  width: 100%;
+} */
