@@ -16,7 +16,13 @@ router.post('/', (req,res,next) => {
     .then((id) => {
       knex('users')
         .where('email', req.body.email)
-        .then((result) => result[0].id)
+        .then((result) => {
+          if (result.length !== 1) {
+            res.status(400).json({ errorMessage: 'Bad email. Flourine, Uranimum, Carbon, Potassium.' })
+          } else {
+            return result[0].id
+          }
+        })
         .then((tenant_id) => {
           return knex
             .into('properties_users')
