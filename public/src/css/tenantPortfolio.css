@@ -41,6 +41,9 @@ html {
 body {
   opacity: 1;
   transition: 1s opacity;
+  background-image: url("https://e794d552b4c822b8205c-27b9cc3fb8731a4a7598943b8a8a6a91.ssl.cf1.rackcdn.com/1/3/large.jpg");
+  background-repeat: no-repeat;
+  background-size: 1300px 700px;
 }
 
 body.fade-out {
@@ -65,4 +68,19 @@ body.fade-out {
 }
 .collapsible-header{
   text-align: center;
+}
+#homeNav{
+  background-color: rgba(0, 0, 0, 0.8);
+}
+#m1{
+  background-color: rgba(0, 0, 0, 0.8)
+}
+#m2{
+  background-color: rgba(0, 0, 0, 0.8)
+}
+#m3{
+  background-color: rgba(0, 0, 0, 0.8)
+}
+#m4{
+  background-color: rgba(0, 0, 0, 0.8)
 }
