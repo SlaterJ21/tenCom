@@ -1,10 +1,22 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
 
-    $.get('/users')
-    .then(alert(result))
+    let cookie = document.cookie
+
+    function parseJWT (token) {
+      var base64Url = token.split('.')[1];
+      var base64 = base64Url.replace('-', '+').replace('_', '/');
+      return JSON.parse(window.atob(base64));
+    };
+
+    console.log(parseJWT(cookie).userId)
 
 
+    $.get(`users/${parseJWT(cookie).userId}`)
+    .done(function(result){
+      $('#pmPortfolio').text(`Hello ${result[0].first_name}`)
+    console.log(result)
+    })
 //ajax request on dom ready
 // $.ajax({url: "/users", success: function(result){
 //   $(".name").html(result);

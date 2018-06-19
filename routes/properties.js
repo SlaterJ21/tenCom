@@ -10,7 +10,7 @@ router.post('/', (req,res,next) => {
       "addressline2": req.body.addressline2,
       "city": req.body.city,
       "state": req.body.state,
-      "postalcode": req.body.password
+      "postalcode": req.body.postalcode
     })
     .returning('*')
     .then((data) => {
