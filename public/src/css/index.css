@@ -43,7 +43,7 @@ body {
   transition: 1s opacity;
   background-image: url("http://images.dreesteam.com/dreeshomes2016/hpslides/HOU/1_LinleyA_RAP.jpg");
   background-repeat: no-repeat;
-  background-size: 1300px 750px;
+  background-size: cover;
   background-color: #cccccc;
 }
 
