@@ -34,7 +34,7 @@
     </div>
   </nav>
 
-  <h1 id="tenantPortfolioHeading" class="center">Property Manager Portfolio</h1>
+  <h1 id="pmPortfolio" class="center">Property Manager Portfolio</h1>
 
   <br><br>
   <div class="center">
@@ -231,7 +231,7 @@
       <div class="modal-content">
         <h4>Lets Get Started</h4>
         <div class="row">
-          <form class="col s12">
+          <form id="addProp" action="/properties" method="post" class="col s12" >
             <div class="row">
               <h5>Name</h5>
               <br>
@@ -245,20 +245,20 @@
               <h5>Address</h5>
               <br>
               <div class="input-field col s6">
-                <input placeholder="12345 Grove St" id="addressline1" type="text" class="validate" required>
+                <input placeholder="12345 Grove St" id="addressline1" name="addressline1" type="text" class="validate" required>
                 <label for="addressline1">Address Line 1</label>
               </div>
               <div class="input-field col s6">
-                <input placeholder="Boulder" id="city1" type="text" class="validate" required>
-                <label for="city1">City</label>
+                <input placeholder="Boulder" id="city" name="city" type="text" class="validate" required>
+                <label for="city">City</label>
               </div>
               <div class="input-field col s6">
-                <input placeholder="CO" id="state1" type="text" class="validate" required>
-                <label for="state1">State</label>
+                <input placeholder="CO" id="state" name="state" type="text" class="validate" required>
+                <label for="state">State</label>
               </div>
               <div class="input-field col s6">
-                <input placeholder="80303" id="zipCode" type="text" class="validate" required>
-                <label for="zipCode">Zip Code</label>
+                <input placeholder="80303" id="postalcode" name="postalcode" type="text" class="validate" required>
+                <label for="postalcode">Zip Code</label>
               </div>
             </div>
 
@@ -286,7 +286,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn waves-effect waves-light" type="submit" name="action">Add Property
+        <button class="btn waves-effect waves-light" type="submit" form="addProp" name="action">Add Property
         <i class="material-icons right">send</i>
         </button>
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
