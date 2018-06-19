@@ -12,14 +12,29 @@ router.post('/', (req,res,next) => {
       "state": req.body.state,
       "postalcode": req.body.postalcode
     })
-    .returning('*')
-    .then((data) => {
-      res.json(data[0])
+    .returning('id')
+    .then((id) => {
+      knex('users')
+        .where('email', req.body.email)
+        .then((result) => result[0].id)
+        .then((tenant_id) => {
+          return knex
+            .into('properties_users')
+            .insert({
+              "property_id": id[0],
+              "tenant_id": tenant_id,
+              "manager_id": req.body.manager_id,
+              "contract_id": req.body.contract_id
+            })
+            .returning('*')
+            .then((data) => {
+              res.json(data[0])
+            })
+        })
     })
     .catch((err) => {
       next(err)
     })
-  res.status(200).send(req.body)
 })
 
 // write a route for getting one of the properties, respond with the parameter id and make sure the id is converted to a string before sending

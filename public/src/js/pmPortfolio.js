@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $.get(`users/${parseJWT(cookie).userId}`)
     .done(function(result){
       $('#pmPortfolio').text(`Hello ${result[0].first_name}`)
-    console.log(result)
+      $('body').find('#manager').val(parseJWT(cookie).userId)
     })
 //ajax request on dom ready
 // $.ajax({url: "/users", success: function(result){
