@@ -80,18 +80,18 @@
             <div class="collapsible-body">
               <h4 class="signInText">Lets Get Started</h4>
               <!-- Switch -->
-              <div class="switch">
-                <h5 class="signInText">Property Manager?</h5>
-                <label>
-                No
-                <input type="checkbox">
-                <span class="lever"></span>
-                Yes
-              </label>
-              </div>
+
               <div class="row">
                 <form id="signup" action="/users" method="post" class="col s12">
-
+                  <div class="switch">
+                    <h5 class="signInText">Property Manager?</h5>
+                    <label>
+                    No
+                    <input type="checkbox" name="ispm">
+                    <span class="lever"></span>
+                    Yes
+                  </label>
+                  </div>
                   <div class="row">
                     <div class="input-field col s12">
                       <input id="first_name" type="text" name="first_name" class="validate" required>
