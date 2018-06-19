@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
 
+    $.get('/users')
+    .then(alert(result))
+
 
 //ajax request on dom ready
 // $.ajax({url: "/users", success: function(result){

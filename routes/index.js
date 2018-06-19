@@ -4,7 +4,12 @@ const jwt = require('jsonwebtoken')
 
 require('dotenv').config()
 
+// router.use((req, res, next) => {
+//   res.redirect('/public')
+// })
+
 router.get('/', function (req, res, next) {
+  console.log('req', req.body);
   if ('jwt' in req.cookies) {
     const jwtCookie = req.cookies.jwt
     jwt.verify(jwtCookie, process.env.JWT_SECRET, (err, decoded) => {
@@ -13,14 +18,14 @@ router.get('/', function (req, res, next) {
       }
       else {
         console.log(Object.keys(decoded))
-        res.render('index',  { title: decoded.username })
+        res.json({ title: decoded.username })
       }
     })
   }
   else {
     res.redirect('/login')
   }
-  res.render('index', { title: 'Express' })
+  res.json({ title: 'Express' })
 })
 
 router.post('/logout', function (req, res, next) {

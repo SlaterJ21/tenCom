@@ -26,6 +26,7 @@ const properties_users = require('./routes/properties_users')
 const contracts = require('./routes/contracts')
 const home = require('./routes/home')
 const login = require('./routes/login')
+const index = require('./routes/index')
 
 //use Routers
 app.use('/', home)
@@ -34,6 +35,7 @@ app.use('/properties', properties)
 app.use('/properties_users', properties_users)
 app.use('/contracts', contracts)
 app.use('/login', login)
+app.use('/index', index)
 
 
 // write a catch all route that will respond with status of 418
