@@ -62,8 +62,6 @@ $.getJSON("items.json", function(content){
 
     $(".button-collapse").sideNav();
 
-    $('.slider').slider();
-
    $('body').removeClass('fade-out');
 
    $('.modal').modal();

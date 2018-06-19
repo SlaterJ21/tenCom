@@ -41,6 +41,9 @@ html {
 body {
   opacity: 1;
   transition: 1s opacity;
+  background-image: url("https://i2.wp.com/www.taskeasy.com/blog/wordpress/wp-content/uploads/2015/08/PropertyManagerWoman_Small.jpg?ssl=1");
+  background-repeat: no-repeat;
+  background-size: 1300px 875px;
 }
 
 body.fade-out {
@@ -65,4 +68,16 @@ body.fade-out {
 }
 .collapsible-header{
   text-align: center;
+}
+#homeNav{
+  background-color: rgba(0, 0, 0, 0.9);
+}
+#m1{
+  background-color: rgba(0, 0, 0, 0.9)
+}
+#m2{
+  background-color: rgba(0, 0, 0, 0.9)
+}
+#m3{
+  background-color: rgba(0, 0, 0, 0.9)
 }
