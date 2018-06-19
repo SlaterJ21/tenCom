@@ -1,18 +1,34 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
 
+let cookie = document.cookie
 
-//ajax request on dom ready
+function parseJWT (token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace('-', '+').replace('_', '/');
+  return JSON.parse(window.atob(base64));
+};
+
+console.log(parseJWT(cookie).userId)
+
+
+$.get(`users/${parseJWT(cookie).userId}`)
+.done(function(result){
+  $('#tenantPortfolio').text(`Hello ${result[0].first_name}`)
+console.log(result)
+})
+
+
+
+// ajax request on dom ready
 // $.ajax({url: "/users", success: function(result){
-//   $(".name").html(result);
+//   alert(result);
 // }});
-//
-// //ajax request on user action
-// $('.name').click(function(){
-//     $.ajax({url: "/properties", success: function(result){
-//         $(".name").html(result);
-//     }});
-// });
+
+
+
+//ajax request on user action
+
 //
 // $('.header').click(function(){
 //   $(event.target).css('color', 'blue')

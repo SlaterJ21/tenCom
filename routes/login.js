@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
 })
 
 router.post('/', function (req, res, next) {
-  console.log(req.body)
   const email = req.body.email
   const password = req.body.password
   if (email && password) {
@@ -27,11 +26,10 @@ router.post('/', function (req, res, next) {
           }
           const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1m' })
           res.cookie('jwt', token)
-          console.log(result[0].ispm)
           if(!result[0].ispm){
-            res.redirect('/tenantPortfolio.html')
+            res.redirect(`/tenantPortfolio.html`)
           } else {
-            res.redirect('/pmPortfolio.html')
+            res.redirect(`/pmPortfolio.html`)
           }
         }
         else {
