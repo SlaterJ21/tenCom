@@ -43,7 +43,7 @@ body {
   transition: 1s opacity;
   background-image: url("https://i2.wp.com/www.taskeasy.com/blog/wordpress/wp-content/uploads/2015/08/PropertyManagerWoman_Small.jpg?ssl=1");
   background-repeat: no-repeat;
-  background-size: 1300px 875px;
+  background-size: cover;
 }
 
 body.fade-out {
