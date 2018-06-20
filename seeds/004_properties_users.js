@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
       ]);
     }).then(() => {
       return knex.raw(
-        'SELECT setval(`properties_users_id`, (SELECT MAX(id) FROM properties_users));'
+        'SELECT setval(`properties_users.id`, (SELECT MAX(id) FROM properties_users));'
       );
     });
 };
