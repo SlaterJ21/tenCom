@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
       ]);
     }).then(() => {
       return knex.raw(
-        'SELECT setval(`contracts.id`, (SELECT MAX(id) FROM contracts));'
+        `SELECT setval('contracts_id_seq', (SELECT MAX(id) FROM contracts));`
       );
     });
 };
