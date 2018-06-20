@@ -8,5 +8,8 @@ exports.seed = function(knex, Promise) {
         {id: 1, addressline1: '628 Barbery Dr', addressline2: 'apt1', city: 'Longmont', state: 'Colorado', postalcode: 80503 },
         {id: 2, addressline1: '4030 Savannah Ct', addressline2: 'apt4', city: 'Boulder', state: 'Colorado', postalcode: 80301},
       ]);
-    });
+    }).then(() => {
+      return knex.raw(
+        'SELECT setval(`properties_id_seq`, (SELECT MAX(id) FROM properties));'
+      );
 };
