@@ -17,6 +17,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
       $('#pmPortfolio').text(`Hello ${result[0].first_name}`)
       $('body').find('#manager').val(parseJWT(cookie).userId)
     })
+
+    $.get(`properties_users/managerProp/${parseJWT(cookie).userId}`)
+    .then(result => {
+      console.log(result)
+      result.forEach(prop => {
+        $.get(`properties/${prop}`)
+        .then(function(ele){
+          let thing = ele[0].addressline1
+          let obj = JSON.stringify(thing)
+          alert(obj)
+        })
+      })
+    })
+
 //ajax request on dom ready
 // $.ajax({url: "/users", success: function(result){
 //   $(".name").html(result);
