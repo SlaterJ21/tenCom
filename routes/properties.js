@@ -34,7 +34,15 @@ router.post('/', (req,res,next) => {
             })
             .returning('*')
             .then((data) => {
-              res.json(data[0])
+              return knex('users')
+              .where('id', data[0].manager_id)
+              .then((result) =>{
+                if(!result[0].ispm){
+                  res.redirect(`/tenantPortfolio.html`)
+                } else {
+                  res.redirect(`/pmPortfolio.html`)
+                }
+              })
             })
         })
     })

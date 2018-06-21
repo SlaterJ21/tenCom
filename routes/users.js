@@ -26,7 +26,6 @@ router.post('/', (req,res,next) => {
           })
           .returning('*')
           .then((data) => {
-            console.log(data)
             const payload = {
               email: data[0].email,
               userId: data[0].id
