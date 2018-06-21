@@ -5,23 +5,34 @@ const { hashSync } = require('bcryptjs')
 
 // write a route for creating a users, return the body of the request that was sent to your route
 router.post('/', (req,res,next) => {
-  let hashWord = hashSync(req.body.password)
   knex('users')
-    .insert({
-      "first_name": req.body.first_name,
-      "last_name": req.body.last_name,
-      "phone_number": req.body.phone_number,
-      "email": req.body.email,
-      "password": hashWord,
-      "ispm": req.body.ispm
+    .where('email', req.body.email)
+    .then((result) => {
+      if (result.length !== 0) {
+        res.status(400).json({ errorMessage: 'Existing Email' })
+      }
+      else {
+        let hashWord = hashSync(req.body.password)
+        knex('users')
+          .insert({
+            "first_name": req.body.first_name,
+            "last_name": req.body.last_name,
+            "phone_number": req.body.phone_number,
+            "email": req.body.email,
+            "password": hashWord,
+            "ispm": req.body.ispm
+          })
+          .returning('*')
+          .then((data) => {
+            res.json(data[0])
+          })
+          .catch((err) => {
+            next(err)
+          })
+      }
+
     })
-    .returning('*')
-    .then((data) => {
-      res.redirect('data[0]')
-    })
-    .catch((err) => {
-      next(err)
-    })
+
   // res.status(200).send(req.body)
 })
 
