@@ -2,6 +2,8 @@ const express = require('../node_modules/express')
 const router = express.Router()
 const knex = require('../knex')
 const { hashSync } = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+
 
 // write a route for creating a users, return the body of the request that was sent to your route
 router.post('/', (req,res,next) => {
@@ -24,7 +26,18 @@ router.post('/', (req,res,next) => {
           })
           .returning('*')
           .then((data) => {
-            res.json(data[0])
+            console.log(data)
+            const payload = {
+              email: data[0].email,
+              userId: data[0].id
+            }
+            const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1m' })
+            res.cookie('jwt', token)
+            if(!data[0].ispm){
+              res.redirect(`/tenantPortfolio.html`)
+            } else {
+              res.redirect(`/pmPortfolio.html`)
+            }
           })
           .catch((err) => {
             next(err)
