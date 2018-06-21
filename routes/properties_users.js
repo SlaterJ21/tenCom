@@ -62,6 +62,18 @@ router.get('/managerTen/:id', (req,res,next) => {
   // res.status(200).send(req.params.id)
 })
 
+router.get('/tenantMan/:id', (req,res,next) => {
+  knex('properties_users')
+  .where('tenant_id',req.params.id)
+  .then((rows) => {
+    res.json(rows[0].manager_id)
+  })
+  .catch((err) => {
+    next(err)
+  })
+  // res.status(200).send(req.params.id)
+})
+
 router.get('/tenant/:id', (req,res,next) => {
   knex('properties_users')
   .where('tenant_id',req.params.id)

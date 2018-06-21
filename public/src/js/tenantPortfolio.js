@@ -9,16 +9,57 @@ function parseJWT (token) {
   return JSON.parse(window.atob(base64));
 };
 
-console.log(parseJWT(cookie).userId)
-
-
 $.get(`users/${parseJWT(cookie).userId}`)
 .done(function(result){
   $('#tenantPortfolio').text(`Hello ${result[0].first_name}`)
-console.log(result)
 })
 
+let promises = []
 
+$.get(`properties_users/tenantMan/${parseJWT(cookie).userId}`)
+.then(result => {
+  $.getJSON(`users/${result}`)
+  .then(ele => {
+    let managerInfo = [`${ele[0].first_name} ${ele[0].last_name}`, ele[0].phone_number, ele[0].email]
+    console.log(managerInfo)
+    console.log(ele)
+    let cardHtml =
+      `<div class="col s12 m4">
+        <div class="card">
+          <div class="card-content">
+            <p>${ele[0].first_name} ${ele[0].last_name}</p>
+          </div>
+          <div class="card-action">
+            <a class="waves-effect waves-light btn modal-trigger" href="#hello">Details</a>
+
+            <!-- Modal Structure -->
+            <div id="hello" class="modal modal-fixed-footer">
+              <div class="modal-content">
+                <h4>${ele[0].phone_number}</h4>
+                <p>${ele[0].email}</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`
+
+
+      let homeCards = $("#cards")
+      homeCards.append(cardHtml)
+  })
+//   result.forEach(prop => {
+//     promises.push($.getJSON(`properties/${prop}`))
+// })
+// Promise.all(promises)
+// .then(function(eles){
+//   cards(eles)
+//   // var address =  ele[0].addressline1
+//   // ans.push(address)
+// })
+})
 
 // ajax request on dom ready
 // $.ajax({url: "/users", success: function(result){
