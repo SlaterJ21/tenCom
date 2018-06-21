@@ -41,7 +41,6 @@ $.get(`properties_users/managerProp/${parseJWT(cookie).userId}`)
      })
      Promise.all(promises2)
      .then(function(eles){
-       console.log(eles)
        cards2(eles)
        // var address =  ele[0].addressline1
        // ans.push(address)
@@ -68,14 +67,17 @@ $.get(`properties_users/managerProp/${parseJWT(cookie).userId}`)
 //
 // console.log(calculator.add(5,5))
 
-function cards(content, data){
+function cards(content){
       for (let i = 0; i < content.length; i++) {
       let cardHtml =
-        `<div class="col s12 m4">
+      `<div class="col s12 m4">
           <div class="card">
-
-            <div class="card-action">
-              <div class="text">${content[i][0].addressline1}</div>
+          <div class="card-image">
+            <img src="${content[i].img}">
+            <span class="card-title">${content[i].title}</span>
+          </div>
+            <div class="card-content">
+              <p>${content[i][0].addressline1}</p>
             </div>
           </div>
         </div>`
@@ -95,8 +97,9 @@ function cards(content, data){
             `<div class="col s12 m4">
               <div class="card">
 
-                <div class="card-action">
-                  <div class="text">${content[i][0].first_name}</div>
+                <div class="card-content">
+                    <p>${content[i][0].first_name}</p>
+                    <p>${content[i][0].phone_number}</p>
                 </div>
               </div>
             </div>`
