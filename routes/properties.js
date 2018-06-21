@@ -10,7 +10,8 @@ router.post('/', (req,res,next) => {
       "addressline2": req.body.addressline2,
       "city": req.body.city,
       "state": req.body.state,
-      "postalcode": req.body.postalcode
+      "postalcode": req.body.postalcode,
+      "img": req.body.img
     })
     .returning('id')
     .then((id) => {
