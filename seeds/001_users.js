@@ -9,5 +9,9 @@ exports.seed = function(knex, Promise) {
         {id: 2, first_name: 'Johnny', last_name: 'Castillo', phone_number: 9549989650, email: 'johnnycast@gmail.com', password: '$2a$10$j89rDRNfazAetK3FErOnZ.pZoeYeoZoXZgi7cFLw4Dyk6MV1HWlTG', ispm: false},
         {id: 3, first_name: 'John', last_name: 'Stephens-Webb', phone_number: 3036467096, email: 'jsw2288@gmail.com', password: '$2a$10$j89rDRNfazAetK3FErOnZ.pZoeYeoZoXZgi7cFLw4Dyk6MV1HWlTG', ispm: false}
       ]);
+    }).then(() => {
+      return knex.raw(
+        `SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));`
+      )
     });
 };

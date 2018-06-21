@@ -47,7 +47,7 @@ router.post('/', (req,res,next) => {
 router.get('/', (req,res,next) => {
   knex('properties')
     .then((rows) => {
-      res.json(rows)
+      res.send(rows)
     })
     .catch((err) => {
       next(err)

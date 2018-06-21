@@ -34,9 +34,49 @@ router.get('/', (req,res,next) => {
 })
 
 // write a route for getting one of the properties_users, respond with the parameter id and make sure the id is converted to a string before sending
-router.get('/:id', (req,res,next) => {
+router.get('/managerProp/:id', (req,res,next) => {
   knex('properties_users')
-  .where('id',req.params.id)
+  .where('manager_id',req.params.id)
+  .then((rows) => {
+    let pmProperties = []
+    rows.forEach(pu => pmProperties.push(pu.property_id))
+    res.json(pmProperties)
+  })
+  .catch((err) => {
+    next(err)
+  })
+  // res.status(200).send(req.params.id)
+})
+
+router.get('/managerTen/:id', (req,res,next) => {
+  knex('properties_users')
+  .where('manager_id',req.params.id)
+  .then((rows) => {
+    let pmTenants = []
+    rows.forEach(pu => pmTenants.push(pu.tenant_id))
+    res.json(pmTenants)
+  })
+  .catch((err) => {
+    next(err)
+  })
+  // res.status(200).send(req.params.id)
+})
+
+router.get('/tenantMan/:id', (req,res,next) => {
+  knex('properties_users')
+  .where('tenant_id',req.params.id)
+  .then((rows) => {
+    res.json(rows[0].manager_id)
+  })
+  .catch((err) => {
+    next(err)
+  })
+  // res.status(200).send(req.params.id)
+})
+
+router.get('/tenant/:id', (req,res,next) => {
+  knex('properties_users')
+  .where('tenant_id',req.params.id)
   .then((rows) => {
     res.json(rows)
   })

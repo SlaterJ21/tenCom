@@ -2,27 +2,50 @@ const express = require('../node_modules/express')
 const router = express.Router()
 const knex = require('../knex')
 const { hashSync } = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+
 
 // write a route for creating a users, return the body of the request that was sent to your route
 router.post('/', (req,res,next) => {
-  console.log(req.body)
-  let hashWord = hashSync(req.body.password)
   knex('users')
-    .insert({
-      "first_name": req.body.first_name,
-      "last_name": req.body.last_name,
-      "phone_number": req.body.phone_number,
-      "email": req.body.email,
-      "password": hashWord,
-      "ispm": req.body.ispm
+    .where('email', req.body.email)
+    .then((result) => {
+      if (result.length !== 0) {
+        res.status(400).json({ errorMessage: 'Existing Email' })
+      }
+      else {
+        let hashWord = hashSync(req.body.password)
+        knex('users')
+          .insert({
+            "first_name": req.body.first_name,
+            "last_name": req.body.last_name,
+            "phone_number": req.body.phone_number,
+            "email": req.body.email,
+            "password": hashWord,
+            "ispm": req.body.ispm
+          })
+          .returning('*')
+          .then((data) => {
+            console.log(data)
+            const payload = {
+              email: data[0].email,
+              userId: data[0].id
+            }
+            const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1m' })
+            res.cookie('jwt', token)
+            if(!data[0].ispm){
+              res.redirect(`/tenantPortfolio.html`)
+            } else {
+              res.redirect(`/pmPortfolio.html`)
+            }
+          })
+          .catch((err) => {
+            next(err)
+          })
+      }
+
     })
-    .returning('*')
-    .then((data) => {
-      res.json(data[0])
-    })
-    .catch((err) => {
-      next(err)
-    })
+
   // res.status(200).send(req.body)
 })
 
