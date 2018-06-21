@@ -24,24 +24,11 @@ $.get(`properties_users/tenantMan/${parseJWT(cookie).userId}`)
     console.log(managerInfo)
     console.log(ele)
     let cardHtml =
-      `<div class="col s12 m4">
+    `<div class="col s12 m4">
         <div class="card">
           <div class="card-content">
-            <p>${ele[0].first_name} ${ele[0].last_name}</p>
-          </div>
-          <div class="card-action">
-            <a class="waves-effect waves-light btn modal-trigger" href="#hello">Details</a>
-
-            <!-- Modal Structure -->
-            <div id="hello" class="modal modal-fixed-footer">
-              <div class="modal-content">
-                <h4>${ele[0].phone_number}</h4>
-                <p>${ele[0].email}</p>
-              </div>
-              <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
-              </div>
-            </div>
+            <p>${ele[0].first_name}</p>
+            <p>${ele[0].phone_number}</p>
           </div>
         </div>
       </div>`
