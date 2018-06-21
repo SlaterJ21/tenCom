@@ -69,12 +69,13 @@ $.get(`properties_users/managerProp/${parseJWT(cookie).userId}`)
 
 function cards(content){
       for (let i = 0; i < content.length; i++) {
+        console.log(content[i][0].img)
       let cardHtml =
-      `<div class="col s12 m4">
+      `<div class="col s12 m6">
           <div class="card">
           <div class="card-image">
-            <img src="${content[i].img}">
-            <span class="card-title">${content[i].title}</span>
+            <img class ="responsive" src="${content[i][0].img}">
+            <span class="card-title">${content[i][0].state}</span>
           </div>
             <div class="card-content">
               <p>${content[i][0].addressline1}</p>

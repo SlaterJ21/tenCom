@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
       table.varchar('city', 60).notNullable().defaultTo('')
       table.varchar('state', 60).notNullable().defaultTo('')
       table.integer('postalcode', 15).notNullable().defaultTo(0)
+      table.varchar('img', 1000).defaultTo('')
 
     })
   };
