@@ -5,7 +5,6 @@ const { hashSync } = require('bcryptjs')
 
 // write a route for creating a users, return the body of the request that was sent to your route
 router.post('/', (req,res,next) => {
-  console.log(req.body)
   let hashWord = hashSync(req.body.password)
   knex('users')
     .insert({
@@ -18,7 +17,7 @@ router.post('/', (req,res,next) => {
     })
     .returning('*')
     .then((data) => {
-      res.json(data[0])
+      res.redirect('data[0]')
     })
     .catch((err) => {
       next(err)
