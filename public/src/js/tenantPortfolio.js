@@ -23,8 +23,8 @@ $.get(`properties_users/tenantMan/${parseJWT(cookie).userId}`)
     let cardHtml =
     `<div class="col s12 m12">
         <div class="card">
-          <div class="card-content">
-            <h4>${ele[0].first_name}</h4>
+          <div class="card-content conMan">
+            <h4 >${ele[0].first_name}</h4>
             <h4>${ele[0].phone_number}</h4>
             <h4>${ele[0].email}</h4>
           </div>
