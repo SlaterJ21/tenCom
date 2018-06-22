@@ -29,7 +29,6 @@ router.get('/', (req,res,next) => {
     .catch((err) => {
       next(err)
     })
-  // res.status(200).send(req.params.id)
 })
 
 // write a route for getting one of the contracts, respond with the parameter id and make sure the id is converted to a string before sending
@@ -37,16 +36,12 @@ router.get('/:id', (req,res,next) => {
   knex('contracts')
   .where('id',req.params.id)
   .then((rows) => {
-    res.json(rows)
+    res.json(rows[0].link)
   })
   .catch((err) => {
     next(err)
   })
-  // res.status(200).send(req.params.id)
 })
 
-// router.use((req, res, next) => {
-//   res.status(200).send('what up contracts ninja')
-// })
 
 module.exports = router

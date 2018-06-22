@@ -9,8 +9,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       return JSON.parse(window.atob(base64));
     };
 
-
-
     $.get(`users/${parseJWT(cookie).userId}`)
     .done(function(result){
       $('#pmPortfolio').text(`Hello ${result[0].first_name}`)
@@ -27,8 +25,6 @@ $.get(`properties_users/managerProp/${parseJWT(cookie).userId}`)
     Promise.all(promises)
     .then(function(eles){
       cards(eles)
-      // var address =  ele[0].addressline1
-      // ans.push(address)
     })
  })
 
@@ -42,30 +38,8 @@ $.get(`properties_users/managerProp/${parseJWT(cookie).userId}`)
      Promise.all(promises2)
      .then(function(eles){
        cards2(eles)
-       // var address =  ele[0].addressline1
-       // ans.push(address)
      })
   })
-
-
-
-//ajax request on dom ready
-// $.ajax({url: "/users", success: function(result){
-//   $(".name").html(result);
-// }});
-//
-// //ajax request on user action
-// $('.name').click(function(){
-//     $.ajax({url: "/properties", success: function(result){
-//         $(".name").html(result);
-//     }});
-// });
-//
-// $('.header').click(function(){
-//   $(event.target).css('color', 'blue')
-// })
-//
-// console.log(calculator.add(5,5))
 
 function cards(content){
       for (let i = 0; i < content.length; i++) {
@@ -87,20 +61,18 @@ function cards(content){
         let homeCards = $("#cards")
         homeCards.append(cardHtml)
       }
-      // $('#modal4').modal();
-      // $('#modal5').modal();
-      // $('#modal6').modal();
     }
 
     function cards2(content){
           for (let i = 0; i < content.length; i++) {
           let cardHtml =
-            `<div class="col s12 m4">
+            `<div class="col s12 m12">
               <div class="card">
 
                 <div class="card-content">
                     <p>${content[i][0].first_name}</p>
                     <p>${content[i][0].phone_number}</p>
+                    <p>${content[i][0].email}</p>
                 </div>
               </div>
             </div>`
@@ -109,12 +81,7 @@ function cards(content){
             let homeCards = $("#cards2")
             homeCards.append(cardHtml)
           }
-          // $('#modal4').modal();
-          // $('#modal5').modal();
-          // $('#modal6').modal();
         }
-
-
 
     $(".button-collapse").sideNav();
 
@@ -125,11 +92,3 @@ function cards(content){
    $('.modal').modal();
 
 });
-
-// <div class="card-image">
-//   <img src="${content[i].img}">
-//   <span class="card-title">${content[i].title}</span>
-// </div>
-// <div class="card-content">
-//   <p>${content[i].cardContent}</p>
-// </div>

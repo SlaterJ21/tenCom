@@ -18,17 +18,15 @@ let promises = []
 
 $.get(`properties_users/tenantMan/${parseJWT(cookie).userId}`)
 .then(result => {
-  $.getJSON(`users/${result}`)
+  $.getJSON(`users/${result[0].manager_id}`)
   .then(ele => {
-    let managerInfo = [`${ele[0].first_name} ${ele[0].last_name}`, ele[0].phone_number, ele[0].email]
-    console.log(managerInfo)
-    console.log(ele)
     let cardHtml =
-    `<div class="col s12 m4">
+    `<div class="col s12 m12">
         <div class="card">
           <div class="card-content">
-            <p>${ele[0].first_name}</p>
-            <p>${ele[0].phone_number}</p>
+            <h4>${ele[0].first_name}</h4>
+            <h4>${ele[0].phone_number}</h4>
+            <h4>${ele[0].email}</h4>
           </div>
         </div>
       </div>`
@@ -37,73 +35,21 @@ $.get(`properties_users/tenantMan/${parseJWT(cookie).userId}`)
       let homeCards = $("#cards")
       homeCards.append(cardHtml)
   })
-//   result.forEach(prop => {
-//     promises.push($.getJSON(`properties/${prop}`))
-// })
-// Promise.all(promises)
-// .then(function(eles){
-//   cards(eles)
-//   // var address =  ele[0].addressline1
-//   // ans.push(address)
-// })
 })
 
-// ajax request on dom ready
-// $.ajax({url: "/users", success: function(result){
-//   alert(result);
-// }});
+$.get(`properties_users/tenantMan/${parseJWT(cookie).userId}`)
+.then(result => {
+  $.getJSON(`contracts/${result[0].contract_id}`)
+  .then(ele => {
+    console.log(ele)
+    let cardHtml =
+    `<img src="${ele}">`
 
 
-
-//ajax request on user action
-
-//
-// $('.header').click(function(){
-//   $(event.target).css('color', 'blue')
-// })
-//
-// console.log(calculator.add(5,5))
-
-$.getJSON("items.json", function(content){
-      console.log(content)
-
-
-      for (var i = content.length-3; i < content.length; i++) {
-      let cardHtml =
-        `<div class="col s12 m4">
-          <div class="card">
-            <div class="card-image">
-              <img src="${content[i].img}">
-              <span class="card-title">${content[i].title}</span>
-            </div>
-            <div class="card-content">
-              <p>${content[i].cardContent}</p>
-            </div>
-            <div class="card-action">
-              <a class="waves-effect waves-light btn modal-trigger"     href="#${content[i].id}">Details</a>
-
-              <!-- Modal Structure -->
-              <div id="${content[i].id}" class="modal modal-fixed-footer">
-                <div class="modal-content">
-                  <h4>${content[i].modalHeader}</h4>
-                  <p>${content[i].modalContent}</p>
-                </div>
-                <div class="modal-footer">
-                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>`
-
-
-        let homeCards = $("#cards")
-        homeCards.append(cardHtml)
-      }
-      // $('#modal4').modal();
-      // $('#modal5').modal();
-      // $('#modal6').modal();
-    })
+      let homeCards = $("#cards2")
+      homeCards.append(cardHtml)
+  })
+})
 
     $(".button-collapse").sideNav();
 

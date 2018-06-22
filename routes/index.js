@@ -4,10 +4,6 @@ const jwt = require('jsonwebtoken')
 
 require('dotenv').config()
 
-// router.use((req, res, next) => {
-//   res.redirect('/public')
-// })
-
 router.get('/', function (req, res, next) {
   console.log('req', req.body);
   if ('jwt' in req.cookies) {
