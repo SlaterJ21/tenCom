@@ -42,10 +42,7 @@ router.post('/', (req,res,next) => {
             next(err)
           })
       }
-
     })
-
-  // res.status(200).send(req.body)
 })
 
 // write a route for getting all of the users, respond with the parameter id and make sure the id is converted to a string before sending
@@ -57,7 +54,6 @@ router.get('/', (req,res,next) => {
     .catch((err) => {
       next(err)
     })
-  // res.status(200).send(req.params.id)
 })
 
 // write a route for getting one of the users, respond with the parameter id and make sure the id is converted to a string before sending
@@ -117,11 +113,6 @@ router.delete('/:id', (req,res,next) => {
   .catch((err) => {
     next(err)
   })
-  // res.status(200).send(req.params.id)
 })
-
-// router.use((req, res, next) => {
-//   res.status(200).send('what up users ninja')
-// })
 
 module.exports = router

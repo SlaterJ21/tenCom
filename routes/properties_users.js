@@ -30,7 +30,6 @@ router.get('/', (req,res,next) => {
     .catch((err) => {
       next(err)
     })
-  // res.status(200).send(req.params.id)
 })
 
 // write a route for getting one of the properties_users, respond with the parameter id and make sure the id is converted to a string before sending
@@ -45,7 +44,6 @@ router.get('/managerProp/:id', (req,res,next) => {
   .catch((err) => {
     next(err)
   })
-  // res.status(200).send(req.params.id)
 })
 
 router.get('/managerTen/:id', (req,res,next) => {
@@ -59,19 +57,17 @@ router.get('/managerTen/:id', (req,res,next) => {
   .catch((err) => {
     next(err)
   })
-  // res.status(200).send(req.params.id)
 })
 
 router.get('/tenantMan/:id', (req,res,next) => {
   knex('properties_users')
   .where('tenant_id',req.params.id)
   .then((rows) => {
-    res.json(rows[0].manager_id)
+    res.json(rows)
   })
   .catch((err) => {
     next(err)
   })
-  // res.status(200).send(req.params.id)
 })
 
 router.get('/tenant/:id', (req,res,next) => {
@@ -83,11 +79,6 @@ router.get('/tenant/:id', (req,res,next) => {
   .catch((err) => {
     next(err)
   })
-  // res.status(200).send(req.params.id)
 })
-
-// router.use((req, res, next) => {
-//   res.status(200).send('what up properties_users ninja')
-// })
 
 module.exports = router

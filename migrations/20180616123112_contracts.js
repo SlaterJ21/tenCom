@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.integer('rent').notNullable().defaultTo(null)
     table.boolean('status').notNullable().defaultTo(true)
     table.string('contract').notNullable().defaultTo('')
+    table.varchar('link', 1000).defaultTo('')
   })
 };
 

@@ -19,7 +19,7 @@ router.post('/', (req,res,next) => {
         .where('email', req.body.email)
         .then((result) => {
           if (result.length !== 1) {
-            res.status(400).json({ errorMessage: 'Bad email. Flourine, Uranimum, Carbon, Potassium.' })
+            res.status(400).json({ errorMessage: 'Enter valid tenant email.' })
           } else {
             return result[0].id
           }
@@ -61,7 +61,6 @@ router.get('/', (req,res,next) => {
     .catch((err) => {
       next(err)
     })
-  // res.status(200).send(req.params.id)
 })
 
 // write a route for getting one of the properties, respond with the parameter id and make sure the id is converted to a string before sending
@@ -74,7 +73,6 @@ router.get('/:id', (req,res,next) => {
   .catch((err) => {
     next(err)
   })
-  // res.status(200).send(req.params.id)
 })
 
 // write a route for deleting one of the properties, respond with the parameter id
@@ -94,11 +92,6 @@ router.delete('/properties/:id', (req,res,next) => {
   .catch((err) => {
     next(err)
   })
-  // res.status(200).send(req.params.id)
 })
-
-// router.use((req, res, next) => {
-//   res.status(200).send('what up properties ninja')
-// })
 
 module.exports = router
