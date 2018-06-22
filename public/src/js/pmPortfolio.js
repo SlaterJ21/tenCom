@@ -69,10 +69,10 @@ function cards(content){
             `<div class="col s12 m12">
               <div class="card">
 
-                <div class="card-content">
-                    <p>${content[i][0].first_name}</p>
-                    <p>${content[i][0].phone_number}</p>
+                <div class="card-content tenCon">
+                    <p>${content[i][0].first_name} ${content[i][0].last_name}</p>
                     <p>${content[i][0].email}</p>
+                    <p>${content[i][0].phone_number}</p>
                 </div>
               </div>
             </div>`
