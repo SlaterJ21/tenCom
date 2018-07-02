@@ -17,7 +17,6 @@ router.post('/', (req,res,next) => {
     .catch((err) => {
       next(err)
     })
-  res.status(200).send(req.body)
 })
 
 // write a route for getting one of the contracts, respond with the parameter id and make sure the id is converted to a string before sending

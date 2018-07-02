@@ -4,6 +4,7 @@ const knex = require('../knex')
 
 // write a route for creating a properties, return the body of the request that was sent to your route
 router.post('/', (req,res,next) => {
+  //validate info coming in
   knex('properties')
     .insert({
       "addressline1": req.body.addressline1,

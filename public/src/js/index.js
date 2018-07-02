@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("DOM fully loaded and parsed");
 
 $.getJSON("items.json", function(content){
 

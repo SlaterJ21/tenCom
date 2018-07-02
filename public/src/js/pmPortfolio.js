@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("DOM fully loaded and parsed");
 
     let cookie = document.cookie
 
     function parseJWT (token) {
-      var base64Url = token.split('.')[1];
-      var base64 = base64Url.replace('-', '+').replace('_', '/');
+      let base64Url = token.split('.')[1];
+      let base64 = base64Url.replace('-', '+').replace('_', '/');
       return JSON.parse(window.atob(base64));
     };
 
@@ -43,7 +42,6 @@ $.get(`properties_users/managerProp/${parseJWT(cookie).userId}`)
 
 function cards(content){
       for (let i = 0; i < content.length; i++) {
-        console.log(content[i][0].img)
       let cardHtml =
       `<div class="col s12 m6">
           <div class="card">

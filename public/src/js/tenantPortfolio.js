@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("DOM fully loaded and parsed");
 
 let cookie = document.cookie
 
 function parseJWT (token) {
-  var base64Url = token.split('.')[1];
-  var base64 = base64Url.replace('-', '+').replace('_', '/');
+  let base64Url = token.split('.')[1];
+  let base64 = base64Url.replace('-', '+').replace('_', '/');
   return JSON.parse(window.atob(base64));
 };
 
@@ -42,7 +41,6 @@ $.get(`properties_users/tenantMan/${parseJWT(cookie).userId}`)
 .then(result => {
   $.getJSON(`contracts/${result[0].contract_id}`)
   .then(ele => {
-    console.log(ele)
     let cardHtml =
     `<img src="${ele}">`
 
