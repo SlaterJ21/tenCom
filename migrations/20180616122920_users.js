@@ -2,7 +2,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', function(table) {
     table.increments()
-
     table.varchar('first_name', 50).notNullable().defaultTo('')
     table.varchar('last_name', 50).notNullable().defaultTo('')
     table.bigInteger('phone_number').defaultTo(null)

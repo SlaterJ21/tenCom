@@ -1,7 +1,6 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('properties', function(table) {
-
       table.increments()
       table.varchar('addressline1', 60).unique('addressline1').notNullable().defaultTo('')
       table.varchar('addressline2', 60).defaultTo('')
